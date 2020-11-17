@@ -1,0 +1,19 @@
+On the Raspberry Pi, enter the command:
+unbuffer ./mon-temp 2>&1 | tee junk.txt
+
+Unbuffer is required to overcome the bash tty queue of data; without it there would be no program output for many minutes.
+mon-temp is the python script in the current directory
+combine stderr with stdout and pipe to the tee program
+save data in filename of your choice.
+
+After program has run for a while, use ^C to stop it.  Or leave it running while you snag data over to your Windows 10 computer.
+
+Use OpenSSH installed on Windows to get a copy of the data file.
+You'll need to create a Win10 key pair and upload the public key to the Linux box; I use putty.
+
+On the Win 10 command line, enter the command:
+scp pi@192.168.x.x:junk.txt junk.txt
+
+This will create a copy of the data file in your present directory.
+
+Run excel and plot the data.
