@@ -1,9 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 import time
 
 def measure_temp():
-    # get string of format "temp=xxx.x'C\n"
     temp = os.popen("vcgencmd measure_temp").readline()
     temp = temp.replace("temp=","")
     return (temp.replace("\n",""))
@@ -16,5 +15,6 @@ while True:
     # for humans to read
     # print cstring + "  " + str(round(tempf,1)) + "'F"
     # for inputting to excel
-    print tempstring + ", " + str(round(tempf,1))
+    print (tempstring + ", " + str(round(tempf,1)))
     time.sleep(2)
+    
